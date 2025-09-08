@@ -30,9 +30,7 @@ public class ChatMessageService {
     }
 
     public List<ChatMessage> findChatMessages(String senderId, String recipientId) {
-        Optional<String> chatId = chatRoomService.getChatRoomId(
-                senderId, recipientId, false);
-
-        return chatId.map(chatMessageRepository.findByChatId).orElse(new ArrayList<>());
+        var chatId = chatRoomService.getChatRoomId(senderId, recipientId, false);
+        return chatId.map(chatMessageRepository::findByChatId).orElse(new ArrayList<>());
     }
 }
