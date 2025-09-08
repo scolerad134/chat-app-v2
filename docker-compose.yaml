@@ -3,19 +3,19 @@ services:
     image: mongo
     container_name: mongo_db
     ports:
-      - 27017
+      - 27017:27017
     volumes:
       - mongo:/data
-    evironment:
+    environment:
       - MONGO_INITDB_ROOT_USERNAME=scolerad
       - MONGO_INITDB_ROOT_PASSWORD=scolerad
   mongo-express:
     image: mongo-express
-    container_name: mongo-express
+    container_name: mongo_express
     restart: always
     ports:
       - 8081:8081
-    evironment:
+    environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=scolerad
       - ME_CONFIG_MONGODB_ADMINPASSWORD=scolerad
       - ME_CONFIG_MONGODB_SERVER=mongodb
